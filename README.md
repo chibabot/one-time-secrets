@@ -33,12 +33,11 @@
    cd one-time-secrets
    Создайте файл .env на основе примера:
    cp .env.example .env
-Запустите сервисы:
-
+2. Запустите сервисы:
     ```bash
     docker-compose up -d --build
-Инициализируйте базу данных (выполнить один раз):
-
+3. Инициализируйте базу данных (выполнить один раз):
+    ```bash
     docker-compose exec app python -c "from main import init_db; import asyncio; asyncio.run(init_db())"
 
 Сервис будет доступен по адресу:
