@@ -28,15 +28,20 @@
 ### Запуск проекта
 
 1. Склонируйте репозиторий:
+   
    ```bash
    git clone https://github.com/yourusername/one-time-secrets.git
    cd one-time-secrets
    Создайте файл .env на основе примера:
    cp .env.example .env
-2. Запустите сервисы:
+   
+3. Запустите сервисы:
+   
     ```bash
     docker-compose up -d --build
-3. Инициализируйте базу данных (выполнить один раз):
+    
+4. Инициализируйте базу данных (выполнить один раз):
+   
     ```bash
     docker-compose exec app python -c "from main import init_db; import asyncio; asyncio.run(init_db())"
 
@@ -56,6 +61,7 @@ ReDoc: /redoc
     curl -X POST "http://localhost:8000/secret" \
     -H "Content-Type: application/json" \
     -d '{"secret": "мой супер секрет", "ttl_seconds": 3600}'
+    
 Ответ:
    
     ```json
@@ -72,15 +78,18 @@ curl "http://localhost:8000/secret/уникальный_идентификато
     curl -X DELETE "http://localhost:8000/secret/уникальный_идентификатор" \
       -H "Content-Type: application/json" \
       -d '{"passphrase": "пароль_если_нужен"}'
+      
 Ответ:
  
     {"status": "secret_deleted"}
 
 ## 🛠 Управление сервисом
+
     docker-compose up -d	Запуск сервисов
     docker-compose down	Остановка сервисов
     docker-compose logs -f	Просмотр логов
     docker-compose down -v	Полная очистка (включая данные)
+    
 ## 📈 Мониторинг
 Для проверки работы сервиса можно использовать:
     
@@ -90,17 +99,16 @@ curl "http://localhost:8000/secret/уникальный_идентификато
 Форкните репозиторий
 Создайте ветку для вашей фичи 
       
-      ```git
       git checkout -b feature/AmazingFeature
 
 Сделайте коммит изменений
-      
-      ```git
-      
+
       git commit -m 'Add some AmazingFeature'
-Запушьте в ветку 
+      
+Запушьте в ветку
       
       git push origin feature/AmazingFeature
+      
 Откройте Pull Request
 
 📜 Лицензия
